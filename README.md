@@ -28,14 +28,38 @@ npm run preview  # ビルド結果のプレビュー
 
 ## GitHub Pages へのデプロイ
 
-1. リポジトリ Settings → Pages → Source を **GitHub Actions** に設定
-2. `main` ブランチへ push すると `.github/workflows/deploy.yml` が自動デプロイ
+**重要:** GitHub Pages はビルド済みの `dist` を配信する必要があります。リポジトリ直下の `index.html`（`/src/main.tsx` を参照）をそのまま公開すると真っ白になります。
 
-手動デプロイ:
+### 初回設定（どちらか一方）
+
+**方法 A — GitHub Actions（推奨）**
+
+1. リポジトリ **Settings → Pages**
+2. **Build and deployment → Source** を **GitHub Actions** に変更
+3. `main` へ push（または Actions タブから「Deploy to GitHub Pages」を手動実行）
+4. Actions が緑色で完了するまで待つ
+
+**方法 B — gh-pages ブランチ**
+
+1. 上記の Actions が一度成功すると `gh-pages` ブランチが作成されます
+2. **Settings → Pages → Source** を **Deploy from a branch** に変更
+3. Branch: **gh-pages** / Folder: **/ (root)**
+
+### 手動デプロイ（ローカル）
 
 ```bash
 npm run deploy
 ```
+
+`gh-pages` ブランチに `dist` の内容だけを push します（方法 B と併用可）。
+
+### うまく表示されないとき
+
+| 症状 | 原因 | 対処 |
+|------|------|------|
+| 真っ白、コンソールに `main.tsx` 404 | Source が **main / root** のまま | 上記 A または B に変更 |
+| JS/CSS が 404 | デプロイ未実行 or 失敗 | Actions タブで workflow を確認 |
+| ローカルは動くが Pages だけおかしい | `base` パス不一致 | `vite.config.ts` の `base: '/UpperStructureChordApp/'` を確認 |
 
 ## 技術構成
 

@@ -21,6 +21,8 @@ const LEFT_OPTIONS: { value: LeftQuality; label: string }[] = [
   { value: 'm7', label: 'm7' },
   { value: 'Maj7', label: 'Maj7' },
   { value: 'm7b5', label: 'm7♭5' },
+  { value: 'quartal', label: '4度重ね' },
+  { value: 'quintal', label: '5度重ね' },
 ];
 
 export function ControlPanel({

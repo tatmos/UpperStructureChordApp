@@ -102,6 +102,16 @@ export const TENSION_RULES: Record<
     conditional: [2],
     avoid: [4, 9, 11], // Maj3, natural 13, Maj7
   },
+  quartal: {
+    tensions: [1, 2, 4, 6, 7, 8, 9],
+    conditional: [5],
+    avoid: [11],
+  },
+  quintal: {
+    tensions: [1, 2, 3, 4, 5, 6, 8, 9, 10],
+    conditional: [],
+    avoid: [11],
+  },
 };
 
 export function normalizeDegreeLabel(degree: string): string {

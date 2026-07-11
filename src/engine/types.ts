@@ -1,5 +1,5 @@
-export type LeftQuality = '7' | 'm7' | 'Maj7' | 'm7b5';
-export type TriadQuality = 'major' | 'minor' | 'augmented' | 'diminished';
+export type LeftQuality = '7' | 'm7' | 'Maj7' | 'm7b5' | 'quartal' | 'quintal';
+export type TriadQuality = 'major' | 'minor' | 'augmented' | 'diminished' | 'quartal' | 'quintal';
 export type StabilityLabel = 'recommended' | 'colorful' | 'high-tension';
 export type StabilityFilter = 'recommended' | 'colorful' | 'all';
 

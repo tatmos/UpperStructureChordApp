@@ -192,6 +192,16 @@ function computeScore(
     reasons.push('LOCRIAN_TENSIONS');
   }
 
+  if (left.quality === 'quartal' && functions.includes('Root') && guideConflicts.length === 0) {
+    points += SCORE_WEIGHTS.idiomaticPattern;
+    reasons.push('QUARTAL_STACK');
+  }
+
+  if (left.quality === 'quintal' && functions.includes('Root') && guideConflicts.length === 0) {
+    points += SCORE_WEIGHTS.idiomaticPattern;
+    reasons.push('QUINTAL_STACK');
+  }
+
   points += conditionalCount * SCORE_WEIGHTS.conditional;
   points -= avoidCount * Math.abs(SCORE_WEIGHTS.avoid);
   points -= guideConflicts.length * Math.abs(SCORE_WEIGHTS.guideToneConflict);
@@ -293,6 +303,8 @@ function qualitySuffix(q: string): string {
     case 'm7': return 'm7';
     case 'Maj7': return 'Maj7';
     case 'm7b5': return 'm7♭5';
+    case 'quartal': return '4度重ね';
+    case 'quintal': return '5度重ね';
     default: return q;
   }
 }
@@ -303,6 +315,8 @@ function triadQualitySuffix(q: TriadQuality): string {
     case 'minor': return 'm';
     case 'augmented': return 'aug';
     case 'diminished': return 'dim';
+    case 'quartal': return ' 4度重ね';
+    case 'quintal': return ' 5度重ね';
   }
 }
 

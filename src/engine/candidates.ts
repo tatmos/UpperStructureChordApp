@@ -11,7 +11,9 @@ import type {
   TriadQuality,
 } from './types';
 
-const TRIAD_QUALITIES: TriadQuality[] = ['major', 'minor', 'augmented', 'diminished'];
+const TRIAD_QUALITIES: TriadQuality[] = [
+  'major', 'minor', 'augmented', 'diminished', 'quartal', 'quintal',
+];
 
 export function generateCandidatePool(
   leftQuality: LeftQuality,

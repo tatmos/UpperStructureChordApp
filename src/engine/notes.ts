@@ -100,6 +100,25 @@ export function spellTriadTone(
   return spellForRoot(triadRoot, targetPc);
 }
 
+export function spellStackedInterval(baseNote: string, semitones: 5 | 7): string {
+  const basePc = noteNameToPc(baseNote);
+  const targetPc = pc(basePc + semitones);
+  const baseLetterIdx = LETTERS.indexOf(baseNote[0]);
+  const letterSteps = semitones === 5 ? 3 : 4;
+  const targetLetter = LETTERS[(baseLetterIdx + letterSteps) % 7];
+  const naturalPc = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 }[targetLetter]!;
+  let diff = pc(targetPc - naturalPc);
+  if (diff > 6) diff -= 12;
+
+  if (diff === 0) return targetLetter;
+  if (diff === 1) return `${targetLetter}#`;
+  if (diff === -1) return `${targetLetter}b`;
+  if (diff === 2) return `${targetLetter}##`;
+  if (diff === -2) return `${targetLetter}bb`;
+
+  return spellForRoot(baseNote, targetPc);
+}
+
 /** 可読性優先：ダブルアクシデンタルを単純化 */
 export function toReadableSpelling(theoretical: string[]): string[] {
   return theoretical.map((n) => {

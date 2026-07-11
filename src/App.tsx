@@ -28,6 +28,8 @@ const TRIAD_HEADERS: Record<TriadQuality, string> = {
   minor: 'Minor',
   augmented: 'Aug',
   diminished: 'Dim',
+  quartal: '4度重ね',
+  quintal: '5度重ね',
 };
 
 export default function App() {
@@ -111,7 +113,7 @@ export default function App() {
   const handleRandom = () => {
     stop();
     const nextSeed = generateSeed();
-    const leftQualities: LeftQuality[] = ['7', 'm7', 'Maj7', 'm7b5'];
+    const leftQualities: LeftQuality[] = ['7', 'm7', 'Maj7', 'm7b5', 'quartal', 'quintal'];
     let nextSettings = settings;
     if (!settings.lockLeftType) {
       const idx = Math.floor(Math.random() * leftQualities.length);
